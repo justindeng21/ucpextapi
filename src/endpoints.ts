@@ -54,20 +54,24 @@ class NoticeOperations{
                 if(newDomain === notices[i].domain){ 
                     domainExist = true;
                 }
-                if(noticeId === notices[i].id){
+                if(noticeId === String(notices[i].id)){
                     noticeExist = true;
                 }
             }
+            console.log('Valid Domain')
         })
         .then(()=>{
+            
             if (domainExist === false && noticeExist === true){
                 NoticeOperations.getNotice(username,password,noticeId).then((response) => response.text())
                 .then((body) => {
+                    console.log('Notice settings fetched')
                     var noticeSettings = JSON.parse(body);
                     noticeSettings.domain = newDomain;
                     noticeSettings.id = 0;
                     NoticeOperations.saveNotice(username,password,noticeSettings)
                     .then((body)=>{
+                        console.log('Request to save notice made')
                         return;
                     })
                 }); 

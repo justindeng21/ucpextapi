@@ -33,36 +33,41 @@ class NoticeOperations {
             }
         });
     }
-}
-function copyNotice(username, password, newDomain, noticeId) {
-    var domainExist = false;
-    var noticeExist = false;
-    NoticeOperations.getAllDomains(username, password).then((response) => response.text()).then((body) => {
-        var notices = JSON.parse(body);
-        for (var i in notices) {
-            if (newDomain === notices[i].domain) {
-                domainExist = true;
+    static copyNotice(username, password, newDomain, noticeId) {
+        var domainExist = false, noticeExist = false;
+        NoticeOperations.getAllDomains(username, password).then((response) => response.text())
+            .then((body) => {
+            var notices = JSON.parse(body);
+            for (var i in notices) {
+                if (newDomain === notices[i].domain) {
+                    domainExist = true;
+                }
+                if (noticeId === String(notices[i].id)) {
+                    noticeExist = true;
+                }
             }
-            if (noticeId === notices[i].id) {
-                noticeExist = true;
-            }
-        }
-    })
-        .then(() => {
-        if (domainExist === false && noticeExist === true) {
-            NoticeOperations.getNotice(username, password, noticeId).then((response) => response.text())
-                .then((body) => {
-                var noticeSettings = JSON.parse(body);
-                noticeSettings.domain = newDomain;
-                noticeSettings.id = 0;
-                NoticeOperations.saveNotice(username, password, noticeSettings).then((body) => {
-                    return;
+            console.log('Valid Domain');
+        })
+            .then(() => {
+            if (domainExist === false && noticeExist === true) {
+                NoticeOperations.getNotice(username, password, noticeId).then((response) => response.text())
+                    .then((body) => {
+                    console.log('Notice settings fetched');
+                    var noticeSettings = JSON.parse(body);
+                    noticeSettings.domain = newDomain;
+                    noticeSettings.id = 0;
+                    NoticeOperations.saveNotice(username, password, noticeSettings)
+                        .then((body) => {
+                        console.log('Request to save notice made');
+                        return;
+                    });
                 });
-            });
-        }
-    });
-    return;
+            }
+        });
+        return;
+    }
 }
+;
 test.app.get('/', (req, res) => {
     res.send('hi');
 });
@@ -73,11 +78,8 @@ test.app.post('/copyNotice', backend_2.jsonParser, (req, res) => {
         return;
     }
     else {
-        var username = req.body.username;
-        var password = req.body.password;
-        var noticeId = req.body.noticeId;
-        var newDomain = req.body.newDomain;
-        copyNotice(username, password, newDomain, noticeId);
+        var username = req.body.username, password = req.body.password, noticeId = req.body.noticeId, newDomain = req.body.newDomain;
+        NoticeOperations.copyNotice(username, password, newDomain, noticeId);
         res.sendStatus(200);
     }
 });

@@ -5,7 +5,8 @@
   "main": "endpoints.js",
   "scripts": {
     "start": "node dist/endpoints.js",
-    "dev":"tsc && npm start"
+    "dev": "tsc && npm start",
+    "deploy": "git add . && git commit -m \"auto-deploy\" && git push origin main"
   },
   "author": "Justin Deng",
   "license": "ISC",
