@@ -1,6 +1,6 @@
 import express,{Application} from 'express';
 import bodyParser from 'body-parser';
-
+import path from 'path';
 
 
 export class Server{
@@ -9,13 +9,14 @@ export class Server{
     
     server : any;
     constructor(){
+        console.log(__dirname)
         
         this.app  = express();
+        this.app.use(express.static(path.join(__dirname, '/js')))
 
         this.app.use(function(req, res, next) {
-            res.header("Access-Control-Allow-Origin", "*");
-            //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-            //res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+            res.header("Access-Control-Allow-Origin", "https://privacy.evidon.com/*");
+
             next();
           });
 
