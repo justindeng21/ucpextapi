@@ -56,7 +56,6 @@ class NoticeOperations {
                 });
             }
         });
-        console.log('hi');
         return;
     }
 }

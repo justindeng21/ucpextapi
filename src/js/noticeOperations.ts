@@ -1,5 +1,5 @@
 
-
+console.log('Hi Justin')
 class NoticeOperations{
 
     
@@ -40,12 +40,12 @@ class NoticeOperations{
             for(var i in notices){
                 if(newDomain === notices[i].domain){ 
                     domainExist = true;
-                    console.log('Invalid Domain')
+                    console.log(`Invalid Domain. ${newDomain} will not be coppied`)
                 }
                 if(noticeId === String(notices[i].id)) noticeExist = true;
                 
             }
-            if(noticeExist === false) console.log('Invalid Notice ID')
+            if(noticeExist === false) console.log(`Invalid notice ID. ${newDomain} will not be coppied`)
             
         })
         .then(()=>{
