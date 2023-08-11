@@ -2,9 +2,11 @@
 console.log('Hi Justin');
 class NoticeOperations {
     /*
-        Paramerters: noticeId - string
+
+        Paramerters: noticeId - int
         Returns: Promise
-        Algorithm: Makes an HTTP request to the UCP api to fetch a specific notice's settings.
+        Algorithm: Makes an HTTP request to the UCP api to fetch a specific notice's settings given a notice ID.
+
     */
     static getNotice(noticeId) {
         return fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice/' + String(noticeId), {
@@ -15,9 +17,11 @@ class NoticeOperations {
         });
     }
     /*
+
         Paramerters: payload - object
         Returns: Promise
-        Algorithm: Makes an HTTP request to the UCP api to save a notice given a payload
+        Algorithm: Makes an HTTP request to the UCP api to save/create a notice given a payload
+
     */
     static saveNotice(payload) {
         return fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice', {
@@ -29,9 +33,11 @@ class NoticeOperations {
         });
     }
     /*
+
         Paramerters: none
         Returns: Promise
-        Logic: Makes an HTTP request to the UCP api to save a notice given a payloas
+        Algorithm: Makes an HTTP request to the UCP api to fetch all notices and their settings
+
     */
     static getAllDomains() {
         return fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice/', {
@@ -41,9 +47,21 @@ class NoticeOperations {
             }
         });
     }
+    /*
+
+        Paramerters: newDomain - String, noticeId - int
+        Returns: none
+        Algorithm:
+            1. The method fetches all notices on the account to validate the notice Id and new domain name. The notice ID must already exist, and the domain must not already exist.
+            2. Once validated, the notice settings specified, is fetched from Evidon servers.
+            3. The notice domains and ID are modified. Please note that the ID is set to zero; this lets Evidon servers know that a new notice needs to be created.
+            4. The new notices settings are then sent in a POST request to the Evidon severs to create the new notice.
+
+    */
     static copyNotice(newDomain, noticeId) {
         var domainExist = false, noticeExist = false;
-        NoticeOperations.getAllDomains().then((response) => response.text())
+        NoticeOperations.getAllDomains()
+            .then((response) => response.text())
             .then((body) => {
             var notices = JSON.parse(body);
             for (var i in notices) {
@@ -68,7 +86,6 @@ class NoticeOperations {
                     NoticeOperations.saveNotice(noticeSettings)
                         .then(() => {
                         console.log('Request to save notice made');
-                        return;
                     });
                 });
             }
@@ -78,6 +95,13 @@ class NoticeOperations {
 }
 ;
 class TemplateOperations {
+    /*
+
+        Paramerters: templateId - int
+        Returns: Promise
+        Algorithm: Makes an HTTP request to the UCP api to fetch a specific templates's settings given a template ID.
+        
+    */
     static getTemplate(templateId) {
         return fetch('https://privacy.evidon.com/v3/sitenotice/api/sntemplate/' + String(templateId), {
             method: 'GET',
@@ -86,6 +110,13 @@ class TemplateOperations {
             }
         });
     }
+    /*
+
+        Paramerters: payload - object
+        Returns: Promise
+        Algorithm: Makes an HTTP request to the UCP api to save/create a template given a payload
+
+    */
     static saveTemplate(payload) {
         return fetch('https://privacy.evidon.com/v3/sitenotice/api/sntemplate/', {
             method: 'POST',
@@ -95,6 +126,13 @@ class TemplateOperations {
             body: JSON.stringify(payload)
         });
     }
+    /*
+
+        Paramerters: none
+        Returns: Promise
+        Algorithm: Makes an HTTP request to the UCP api to fetch all templates and their settings
+
+    */
     static getAllTemplates() {
         return fetch('https://privacy.evidon.com/v3/sitenotice/api/sntemplate', {
             method: 'GET',
@@ -103,9 +141,21 @@ class TemplateOperations {
             }
         });
     }
+    /*
+
+        Paramerters: newDomain - String, noticeId - int
+        Returns: none
+        Algorithm:
+            1. The method fetches all templates on the account to validate the template ID. The template ID must already exist.
+            2. Once validated, the template settings specified, is fetched from Evidon servers.
+            3. The template ID is modified. Please note that the ID is set to zero; this lets Evidon servers know that a new template needs to be created.
+            4. The new template settings are then sent in a POST request to the Evidon severs to create the new template.
+
+    */
     static copyTemplate(templateId) {
         var templateExist = false;
-        TemplateOperations.getAllTemplates().then((response) => response.text())
+        TemplateOperations.getAllTemplates()
+            .then((response) => response.text())
             .then((body) => {
             var templates = JSON.parse(body);
             for (var i in templates) {
@@ -126,10 +176,10 @@ class TemplateOperations {
                     TemplateOperations.saveTemplate(templateSettings)
                         .then(() => {
                         console.log('Request to save template made');
-                        return;
                     });
                 });
             }
         });
+        return;
     }
 }
