@@ -2,7 +2,11 @@
 console.log('Hi Justin')
 class NoticeOperations{
 
-    
+    /*
+        Paramerters: noticeId - string
+        Returns: Promise
+        Algorithm: Makes an HTTP request to the UCP api to fetch a specific notice's settings.
+    */
     static getNotice(noticeId: string){
         return fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice/'+noticeId,{
             method:'GET',
@@ -12,7 +16,11 @@ class NoticeOperations{
         })
     }
 
-
+    /*
+        Paramerters: payload - object
+        Returns: Promise
+        Algorithm: Makes an HTTP request to the UCP api to save a notice given a payload
+    */
     static saveNotice(payload: object){
         return fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice',{
             method:'POST',
@@ -23,6 +31,11 @@ class NoticeOperations{
         })
     }
 
+    /*
+        Paramerters: none
+        Returns: Promise
+        Logic: Makes an HTTP request to the UCP api to save a notice given a payloas
+    */
     static getAllDomains(){
         return fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice/',{
                 method:'GET',
@@ -67,6 +80,7 @@ class NoticeOperations{
         })
         return;
     }
+
 
 };
 

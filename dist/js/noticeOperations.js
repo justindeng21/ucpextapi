@@ -1,5 +1,11 @@
 "use strict";
+console.log('Hi Justin');
 class NoticeOperations {
+    /*
+        Paramerters: noticeId - string
+        Returns: Promise
+        Algorithm: Makes an HTTP request to the UCP api to fetch a specific notice's settings.
+    */
     static getNotice(noticeId) {
         return fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice/' + noticeId, {
             method: 'GET',
@@ -8,6 +14,11 @@ class NoticeOperations {
             }
         });
     }
+    /*
+        Paramerters: payload - object
+        Returns: Promise
+        Algorithm: Makes an HTTP request to the UCP api to save a notice given a payload
+    */
     static saveNotice(payload) {
         return fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice', {
             method: 'POST',
@@ -17,6 +28,11 @@ class NoticeOperations {
             body: JSON.stringify(payload)
         });
     }
+    /*
+        Paramerters: none
+        Returns: Promise
+        Logic: Makes an HTTP request to the UCP api to save a notice given a payloas
+    */
     static getAllDomains() {
         return fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice/', {
             method: 'GET',
@@ -33,12 +49,13 @@ class NoticeOperations {
             for (var i in notices) {
                 if (newDomain === notices[i].domain) {
                     domainExist = true;
-                    console.log('invalid Domain');
+                    console.log(`Invalid Domain. ${newDomain} will not be coppied`);
                 }
-                if (noticeId === String(notices[i].id)) {
+                if (noticeId === String(notices[i].id))
                     noticeExist = true;
-                }
             }
+            if (noticeExist === false)
+                console.log(`Invalid notice ID. ${newDomain} will not be coppied`);
         })
             .then(() => {
             if (domainExist === false && noticeExist === true) {
