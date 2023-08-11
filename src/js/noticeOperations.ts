@@ -31,6 +31,16 @@ class NoticeOperations{
         })
     }
 
+
+    static getTemplate(templateId: string){
+        return fetch('https://privacy.evidon.com/v3/sitenotice/api/sntemplate/'+templateId,{
+            method:'GET',
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+
     /*
         Paramerters: none
         Returns: Promise
@@ -44,6 +54,9 @@ class NoticeOperations{
                 }
             })
     }
+
+
+
 
     static copyNotice(newDomain:string,noticeId:string){
         var domainExist = false, noticeExist = false;
@@ -83,5 +96,7 @@ class NoticeOperations{
 
 
 };
+
+
 
 
