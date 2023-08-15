@@ -12,6 +12,9 @@ test = new Server()
 
 
 
+test.app.get('/',jsonParser,(req,res)=>{
+    res.sendFile('js/createTags.js',{ root: __dirname })
+})
 
 
 

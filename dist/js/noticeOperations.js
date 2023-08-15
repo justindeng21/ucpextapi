@@ -65,29 +65,34 @@ class NoticeOperations {
             .then((body) => {
             var notices = JSON.parse(body);
             for (var i in notices) {
-                if (newDomain === notices[i].domain) {
+                if (newDomain === notices[i].domain)
                     domainExist = true;
-                    console.log(`Invalid Domain. ${newDomain} will not be coppied`);
-                }
                 if (noticeId === notices[i].id)
                     noticeExist = true;
             }
             if (noticeExist === false)
-                console.log(`Invalid notice ID. ${newDomain} will not be coppied`);
+                throw (`Invalid notice ID. ${newDomain} will not be coppied`);
+            if (domainExist === true)
+                throw (`Domain already exist.`);
         })
             .then(() => {
             if (domainExist === false && noticeExist === true) {
-                NoticeOperations.getNotice(noticeId).then((response) => response.text())
-                    .then((body) => {
-                    console.log('Notice settings fetched');
-                    var noticeSettings = JSON.parse(body);
-                    noticeSettings.domain = newDomain;
-                    noticeSettings.id = 0;
-                    NoticeOperations.saveNotice(noticeSettings)
-                        .then(() => {
-                        console.log('Request to save notice made');
+                try {
+                    NoticeOperations.getNotice(noticeId).then((response) => response.text())
+                        .then((body) => {
+                        console.log('Notice settings fetched');
+                        var noticeSettings = JSON.parse(body);
+                        noticeSettings.domain = newDomain;
+                        noticeSettings.id = 0;
+                        NoticeOperations.saveNotice(noticeSettings)
+                            .then(() => {
+                            console.log('Request to save notice made');
+                        });
                     });
-                });
+                }
+                catch (error) {
+                    return;
+                }
             }
         });
         return;
@@ -167,17 +172,22 @@ class TemplateOperations {
         })
             .then(() => {
             if (templateExist === true) {
-                TemplateOperations.getTemplate(templateId).then((response) => response.text())
-                    .then((body) => {
-                    console.log('Template settings fetched');
-                    var templateSettings = JSON.parse(body);
-                    templateSettings.name = 'copy' + templateSettings.name;
-                    templateSettings.id = 0;
-                    TemplateOperations.saveTemplate(templateSettings)
-                        .then(() => {
-                        console.log('Request to save template made');
+                try {
+                    TemplateOperations.getTemplate(templateId).then((response) => response.text())
+                        .then((body) => {
+                        console.log('Template settings fetched');
+                        var templateSettings = JSON.parse(body);
+                        templateSettings.name = 'copy' + templateSettings.name;
+                        templateSettings.id = 0;
+                        TemplateOperations.saveTemplate(templateSettings)
+                            .then(() => {
+                            console.log('Request to save template made');
+                        });
                     });
-                });
+                }
+                catch (error) {
+                    return;
+                }
             }
         });
         return;
