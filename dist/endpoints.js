@@ -1,11 +1,60 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const backend_1 = require("./backend");
+const fs_1 = __importDefault(require("fs"));
+const child_process_1 = require("child_process");
 let test;
 test = new backend_1.Server();
+function makeid(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+    }
+    return result;
+}
 test.app.get('/', backend_1.jsonParser, (req, res) => {
     res.sendFile('js/createTags.js', { root: __dirname });
 });
 test.app.get('/noticeoperations.js', backend_1.jsonParser, (req, res) => {
     res.sendFile('js/noticeOperations.js', { root: __dirname });
+});
+test.app.post('/', backend_1.jsonParser, (req, res) => {
+    fs_1.default.writeFile('data/' + makeid(20) + '.json', JSON.stringify(req.body), (err) => {
+        if (err) {
+            console.log('There was an error');
+            return;
+        }
+    });
+    res.end();
+});
+test.app.get('/childprocess', () => {
+    (0, child_process_1.exec)('python pythonSubRoutines/aggregateData.py', (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+        }
+        else if (stderr) {
+            console.log(`stderr: ${stderr}`);
+        }
+        else {
+            console.log(stdout);
+        }
+    });
+});
+(0, child_process_1.exec)('python pythonSubRoutines/aggregateData.py', (error, stdout, stderr) => {
+    if (error) {
+        console.log(`error: ${error.message}`);
+    }
+    else if (stderr) {
+        console.log(`stderr: ${stderr}`);
+    }
+    else {
+        console.log(stdout);
+    }
 });

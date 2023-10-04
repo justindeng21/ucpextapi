@@ -1,0 +1,1194 @@
+{
+    "company": {
+        "2023-08-05": [
+            {
+                "count": 10,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 7,
+                "newconsents": 4
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-19": [
+            {
+                "count": 3,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 1
+            },
+            {
+                "count": 5,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 1
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 10,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 5,
+                "newconsents": 1
+            }
+        ],
+        "2023-08-16": [
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 0
+            },
+            {
+                "count": 3,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 3,
+                "newconsents": 0
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 11,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 8,
+                "newconsents": 2
+            }
+        ],
+        "2023-08-20": [
+            {
+                "count": 19,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 12,
+                "newconsents": 2
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3895114",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 6,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 3,
+                "newconsents": 1
+            }
+        ],
+        "2023-08-17": [
+            {
+                "count": 18,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 8,
+                "newconsents": 2
+            },
+            {
+                "count": 9,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 1
+            },
+            {
+                "count": 5,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-14": [
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3895114",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 19,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 12,
+                "newconsents": 0
+            },
+            {
+                "count": 5,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 3,
+                "newconsents": 3
+            },
+            {
+                "count": 7,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 1
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-07": [
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 0
+            },
+            {
+                "count": 7,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 6,
+                "newconsents": 0
+            },
+            {
+                "count": 15,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 48,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 34,
+                "newconsents": 14
+            },
+            {
+                "count": 3,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-26": [
+            {
+                "count": 6,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 5,
+                "newconsents": 1
+            },
+            {
+                "count": 2271,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 17,
+                "newconsents": 4
+            },
+            {
+                "count": 6,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 4,
+                "newconsents": 1
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-31": [
+            {
+                "count": 6,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 3,
+                "newconsents": 1
+            },
+            {
+                "count": 6,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 4,
+                "newconsents": 1
+            },
+            {
+                "count": 12,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 4,
+                "newconsents": 2
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3658394",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 1
+            },
+            {
+                "count": 4,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 1
+            },
+            {
+                "count": 1941,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 78,
+                "newconsents": 23
+            }
+        ],
+        "2023-09-02": [
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 1
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 2803,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 49,
+                "newconsents": 17
+            },
+            {
+                "count": 8,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 0
+            },
+            {
+                "count": 6,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3895114",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-29": [
+            {
+                "count": 9,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 7,
+                "newconsents": 5
+            },
+            {
+                "count": 2298,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 62,
+                "newconsents": 20
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3437598",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 28,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 5,
+                "newconsents": 2
+            },
+            {
+                "count": 10,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 5,
+                "newconsents": 1
+            }
+        ],
+        "2023-08-24": [
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 9,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 5,
+                "newconsents": 3
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3625428",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 3,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 0
+            },
+            {
+                "count": 431,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 22,
+                "newconsents": 4
+            }
+        ],
+        "2023-08-30": [
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 2233,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 59,
+                "newconsents": 23
+            },
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3437598",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 8,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 3,
+                "newconsents": 1
+            },
+            {
+                "count": 7,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 3,
+                "newconsents": 0
+            },
+            {
+                "count": 5,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 3,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-23": [
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3625428",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 8,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 6,
+                "newconsents": 3
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 72,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 41,
+                "newconsents": 4
+            },
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 1
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-09": [
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 4,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 2
+            },
+            {
+                "count": 27,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 20,
+                "newconsents": 3
+            }
+        ],
+        "2023-08-08": [
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 55,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 37,
+                "newconsents": 13
+            },
+            {
+                "count": 3,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 3,
+                "newconsents": 0
+            },
+            {
+                "count": 6,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 3,
+                "newconsents": 1
+            },
+            {
+                "count": 4,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-04": [
+            {
+                "count": 3,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 26,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 14,
+                "newconsents": 3
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            }
+        ],
+        "2023-09-01": [
+            {
+                "count": 10,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 7,
+                "newconsents": 3
+            },
+            {
+                "count": 2799,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 106,
+                "newconsents": 33
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3439705",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3895114",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 9,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 6,
+                "newconsents": 1
+            },
+            {
+                "count": 9,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 4,
+                "newconsents": 1
+            }
+        ],
+        "2023-08-27": [
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 1
+            },
+            {
+                "count": 2549,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 26,
+                "newconsents": 11
+            },
+            {
+                "count": 5,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 3,
+                "newconsents": 1
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3382998",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3439705",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 1
+            },
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3895114",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-06": [
+            {
+                "count": 14,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 10,
+                "newconsents": 4
+            },
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 1
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 1
+            }
+        ],
+        "2023-08-28": [
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3895114",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 2278,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 23,
+                "newconsents": 7
+            },
+            {
+                "count": 10,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 5,
+                "newconsents": 1
+            },
+            {
+                "count": 3,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-15": [
+            {
+                "count": 4,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 1
+            },
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 19,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 11,
+                "newconsents": 1
+            }
+        ],
+        "2023-08-25": [
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 1
+            },
+            {
+                "count": 1933,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 21,
+                "newconsents": 6
+            },
+            {
+                "count": 3,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 1
+            },
+            {
+                "count": 5,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 4,
+                "newconsents": 2
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-13": [
+            {
+                "count": 9,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 4,
+                "newconsents": 1
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 3,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-12": [
+            {
+                "count": 10,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 7,
+                "newconsents": 3
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-18": [
+            {
+                "count": 12,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 8,
+                "newconsents": 0
+            },
+            {
+                "count": 3,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 1
+            }
+        ],
+        "2023-08-11": [
+            {
+                "count": 3,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 0
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 1
+            },
+            {
+                "count": 14,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 5,
+                "newconsents": 0
+            }
+        ],
+        "2023-09-03": [
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 4,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 2894,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 56,
+                "newconsents": 17
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3437598",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3865483",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 2,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 1
+            }
+        ],
+        "2023-08-22": [
+            {
+                "count": 11,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 4,
+                "newconsents": 2
+            },
+            {
+                "count": 4,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 1
+            },
+            {
+                "count": 26,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 19,
+                "newconsents": 4
+            },
+            {
+                "count": 3,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 0
+            }
+        ],
+        "2023-08-10": [
+            {
+                "count": 5,
+                "consentrequired": true,
+                "country": "3686110",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 0
+            },
+            {
+                "count": 4,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 3,
+                "newconsents": 2
+            },
+            {
+                "count": 3,
+                "consentrequired": true,
+                "country": "3439705",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 1
+            },
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 1,
+                "newconsents": 0
+            },
+            {
+                "count": 15,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 6,
+                "newconsents": 1
+            }
+        ],
+        "2023-08-21": [
+            {
+                "count": 1,
+                "consentrequired": true,
+                "country": "3658394",
+                "notice": 96211,
+                "consentcount": 0,
+                "newconsents": 0
+            },
+            {
+                "count": 7,
+                "consentrequired": true,
+                "country": "3932488",
+                "notice": 96211,
+                "consentcount": 4,
+                "newconsents": 1
+            },
+            {
+                "count": 4,
+                "consentrequired": true,
+                "country": "3923057",
+                "notice": 96211,
+                "consentcount": 2,
+                "newconsents": 0
+            },
+            {
+                "count": 26,
+                "consentrequired": true,
+                "country": "3469034",
+                "notice": 96211,
+                "consentcount": 15,
+                "newconsents": 2
+            }
+        ]
+    }
+}
