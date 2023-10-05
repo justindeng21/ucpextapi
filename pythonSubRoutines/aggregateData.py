@@ -4,6 +4,7 @@ import os.path
 from datetime import datetime
 import csv
 import sys
+import configparser
 
 
 cwd = os.path.abspath(os.path.dirname(__file__))
@@ -142,8 +143,16 @@ class CountryBasedAggregation:
 
 
 
-i = DateBasedAggregation()
-k = CountryBasedAggregation()
+class fileUploader():
+    
 
-for file_name in file_names:
-    os.remove('data/'+file_name)
+    def __init__(self) -> None:
+        self.getVarFromFile()
+        pass
+
+    def getVarFromFile(self) -> None:
+        config = configparser.ConfigParser()
+        config.read(os.path.join(os.path.dirname(cwd), r'pythonSubRoutines/config/test.env'))
+        print (config.get('AWS','DB_DATABASE'))
+
+i = fileUploader()
