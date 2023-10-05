@@ -2,6 +2,7 @@ import { Server, jsonParser} from "./backend";
 import fs from 'fs'
 import {exec} from 'child_process'
 
+
 let test : Server
 test = new Server()
 
@@ -59,7 +60,7 @@ test.app.get('/childprocess',()=>{
     })
 })
 
-exec('python pythonSubRoutines/aggregateData.py', (error, stdout, stderr) => {
+exec('python pythonSubRoutines/aggregateData.py ' + 'www.ama.com', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
     }

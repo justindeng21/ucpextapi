@@ -47,7 +47,7 @@ test.app.get('/childprocess', () => {
         }
     });
 });
-(0, child_process_1.exec)('python pythonSubRoutines/aggregateData.py', (error, stdout, stderr) => {
+(0, child_process_1.exec)('python pythonSubRoutines/aggregateData.py ' + 'www.ama.com', (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
     }
