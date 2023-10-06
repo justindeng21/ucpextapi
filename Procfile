@@ -1,1 +1,1 @@
-web: node start enpoints.js
+web: node enpoints.js
