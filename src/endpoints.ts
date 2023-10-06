@@ -46,8 +46,8 @@ test.app.post('/',jsonParser,(req,res)=>{
 })
 
 
-test.app.get('/childprocess',()=>{
-    exec('python pythonSubRoutines/aggregateData.py', (error, stdout, stderr) => {
+test.app.get('/childprocess',(req,res)=>{
+    exec('python pythonSubRoutines/test.py', (error, stdout, stderr) => {
         if (error) {
           console.log(`error: ${error.message}`);
         }
@@ -58,16 +58,6 @@ test.app.get('/childprocess',()=>{
           console.log(stdout);
         }
     })
+    res.send('hello')
 })
 
-exec('python pythonSubRoutines/aggregateData.py ' + 'www.ama.com', (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-    }
-    else if (stderr) {
-      console.log(`stderr: ${stderr}`);
-    }
-    else {
-      console.log(stdout);
-    }
-})

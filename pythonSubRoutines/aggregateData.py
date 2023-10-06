@@ -4,8 +4,9 @@ import os.path
 from datetime import datetime
 import csv
 import sys
-import configparser
-
+import boto3
+import string
+import random
 
 cwd = os.path.abspath(os.path.dirname(__file__))
 data_relative_path = os.path.join(os.path.dirname(cwd), "data")
@@ -20,8 +21,10 @@ class DateBasedAggregation:
         self.getAllKeys()
         self.aggregateData()
         self.writeToCSV()
-        
         return
+    
+    def getFileLocation(self):
+        return self.fileName
     
     def getAllKeys(self):
         keys = []
@@ -77,7 +80,7 @@ class DateBasedAggregation:
         with open(self.fileName, 'a',newline='') as f:
             writer = csv.DictWriter(f,fieldnames = field_names)
             writer.writerow(finalAgg)
-        os.remove(self.fileName)
+        
 
 
 class CountryBasedAggregation:
@@ -87,8 +90,10 @@ class CountryBasedAggregation:
         self.getAllKeys()
         self.aggregateData()
         self.writeToCSV()
-        
         return
+    
+    def getFileLocation(self):
+        return self.fileName
     
     def getAllKeys(self):
         dataframe = {}
@@ -136,7 +141,7 @@ class CountryBasedAggregation:
         with open(self.fileName, 'a',newline='') as f:
             writer = csv.DictWriter(f,fieldnames = field_names)
             writer.writerow(finalAgg)
-        os.remove(self.fileName)
+        
 
 
 
@@ -147,12 +152,30 @@ class fileUploader():
     
 
     def __init__(self) -> None:
-        self.getVarFromFile()
+        self.countryBasedReport = CountryBasedAggregation()
+        self.dateBasedReport = DateBasedAggregation()
+        self.uploadFiles()
         pass
 
-    def getVarFromFile(self) -> None:
-        config = configparser.ConfigParser()
-        config.read(os.path.join(os.path.dirname(cwd), r'pythonSubRoutines/config/test.env'))
-        print (config.get('AWS','DB_DATABASE'))
+
+    def randomKey(self):
+        return ''.join(random.choices(string.ascii_lowercase + string.digits, k=7))
+
+    def uploadFiles(self) -> None:
+        s3_client = boto3.client(
+            's3',
+            aws_access_key_id=os.environ.get('awsAccessID'),
+            aws_secret_access_key=os.environ.get('awsSecretKey')
+        )
+        s3_client.upload_file(self.countryBasedReport.getFileLocation(), 'aggregate-reports-ucp', self.randomKey()+'countryBasedAggregation.csv')
+        s3_client.upload_file(self.dateBasedReport.getFileLocation(), 'aggregate-reports-ucp', self.randomKey()+'dateBasedAggregation.csv')
+        self.deleteFiles()
+    
+    def deleteFiles(self):
+        os.remove(self.countryBasedReport.getFileLocation())
+        os.remove(self.dateBasedReport.getFileLocation())
+        for file_name in file_names:
+            os.remove('data/'+file_name)
+
 
 i = fileUploader()
