@@ -1,1 +1,1 @@
-web: node endpoints.js
+web: npm run dev
