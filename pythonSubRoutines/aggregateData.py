@@ -12,7 +12,7 @@ cwd = os.path.abspath(os.path.dirname(__file__))
 data_relative_path = os.path.join(os.path.dirname(cwd), "data")
 file_names = os.listdir(data_relative_path)
 file_names.remove('keep.txt')
-domain = sys.argv[1]
+domain = ''
 
 
 class DateBasedAggregation:
