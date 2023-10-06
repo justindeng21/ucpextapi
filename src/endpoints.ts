@@ -47,7 +47,7 @@ test.app.post('/',jsonParser,(req,res)=>{
 
 
 test.app.get('/childprocess',(req,res)=>{
-    exec('python pythonSubRoutines/test.py', (error, stdout, stderr) => {
+    exec('python pythonSubRoutines/aggregateData.py', (error, stdout, stderr) => {
         if (error) {
           console.log(`error: ${error.message}`);
         }
