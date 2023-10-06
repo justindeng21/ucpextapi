@@ -11,6 +11,7 @@ import random
 cwd = os.path.abspath(os.path.dirname(__file__))
 data_relative_path = os.path.join(os.path.dirname(cwd), "data")
 file_names = os.listdir(data_relative_path)
+file_names.remove('keep.txt')
 domain = sys.argv[1]
 
 
@@ -175,7 +176,8 @@ class fileUploader():
         os.remove(self.countryBasedReport.getFileLocation())
         os.remove(self.dateBasedReport.getFileLocation())
         for file_name in file_names:
-            os.remove('data/'+file_name)
+            if file_name != 'keep.txt':
+                os.remove('data/'+file_name)
 
 
 i = fileUploader()

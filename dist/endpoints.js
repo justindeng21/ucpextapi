@@ -34,8 +34,8 @@ test.app.post('/', backend_1.jsonParser, (req, res) => {
     });
     res.end();
 });
-test.app.get('/childprocess', () => {
-    (0, child_process_1.exec)('python pythonSubRoutines/aggregateData.py', (error, stdout, stderr) => {
+test.app.get('/childprocess', (req, res) => {
+    (0, child_process_1.exec)('python pythonSubRoutines/test.py', (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
         }
@@ -46,15 +46,5 @@ test.app.get('/childprocess', () => {
             console.log(stdout);
         }
     });
-});
-(0, child_process_1.exec)('python pythonSubRoutines/aggregateData.py ' + 'www.ama.com', (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-    }
-    else if (stderr) {
-        console.log(`stderr: ${stderr}`);
-    }
-    else {
-        console.log(stdout);
-    }
+    res.send('hello');
 });
