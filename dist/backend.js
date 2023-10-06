@@ -12,6 +12,12 @@ class Server {
         console.log(__dirname);
         this.app = (0, express_1.default)();
         this.app.use(express_1.default.static(path_1.default.join(__dirname, '/js')));
+        this.app.use(body_parser_1.default.json({ limit: '35mb' }));
+        this.app.use(body_parser_1.default.urlencoded({
+            extended: true,
+            limit: '35mb',
+            parameterLimit: 50000,
+        }));
         this.app.use(function (req, res, next) {
             res.header("Access-Control-Allow-Origin", "https://privacy.evidon.com");
             res.header("Access-Control-Allow-Headers", "Origin, X-Api-Key, X-Requested-With, Content-Type, Accept, Authorization");

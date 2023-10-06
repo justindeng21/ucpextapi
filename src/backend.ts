@@ -13,6 +13,15 @@ export class Server{
         
         this.app  = express();
         this.app.use(express.static(path.join(__dirname, '/js')))
+        this.app.use(bodyParser.json({limit: '35mb'}));
+
+        this.app.use(
+        bodyParser.urlencoded({
+            extended: true,
+            limit: '35mb',
+            parameterLimit: 50000,
+        }),
+        );
 
         this.app.use(function(req, res, next) {
             res.header("Access-Control-Allow-Origin", "https://privacy.evidon.com");
@@ -20,7 +29,7 @@ export class Server{
 
             next();
           });
-
+        
         this.server = this.app.listen(process.env.PORT || 3400, () => console.log("server running"));
     }
 
@@ -28,7 +37,11 @@ export class Server{
        this.server.close()
     }
 
+    
+
 }
+
+
 
 export var jsonParser = bodyParser.json()
 export var urlencodedParser = bodyParser.urlencoded({ extended: false })
