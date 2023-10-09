@@ -1,6 +1,6 @@
-var startTime = 1691280000000;
+var startTime = 1693785600000;
 var endTime = 1696464000000;
-var noticeId =14585
+var noticeId =15249
 var payloads = []
 
 var nortAmerica = {
@@ -276,7 +276,8 @@ function fetchJsonFiles(payloads){
 
 fetchJsonFiles(payloads)
 
-
-fetch('https://ucpext-516b1e095e39.herokuapp.com/childprocess',{
-  method: 'GET',
-});
+setTimeout(()=>{
+    fetch('https://ucpext-516b1e095e39.herokuapp.com/childprocess',{
+        method: 'GET',
+    });
+},10000)
