@@ -1,13 +1,12 @@
-var startTime = 1693785600000;
-var endTime = 1696464000000;
-var noticeId =15249
+var startTime = 1672531200000;
+var endTime = 1696809600000;
+var noticeId;
 var payloads = []
 
 var nortAmerica = {
   "start": startTime,
   "end":endTime,
   "noticeIds": [
-    noticeId
   ],
   "countryIds": [
     6252001,
@@ -22,7 +21,6 @@ var europe = {
   "start": startTime,
   "end":endTime,
   "noticeIds": [
-    noticeId
   ],
   "countryIds": [
     2921044,
@@ -65,7 +63,7 @@ var asiaPacific = {
   "start": startTime,
   "end":endTime,
   "noticeIds": [
-    noticeId
+
   ],
   "countryIds": [
     1814991,
@@ -97,7 +95,7 @@ var middleEast = {
   "start": startTime,
   "end":endTime,
   "noticeIds": [
-    noticeId
+
   ],
   "countryIds": [
     294640,
@@ -114,7 +112,7 @@ var centralAmerica = {
   "start": startTime,
   "end":endTime,
   "noticeIds": [
-    noticeId
+
   ],
   "countryIds": [
     3996063,
@@ -133,7 +131,7 @@ var europeNonEu = {
   "start": startTime,
   "end":endTime,
   "noticeIds": [
-    noticeId
+
   ],
   "countryIds": [
     2017370,
@@ -156,7 +154,7 @@ var southAmerica = {
   "start": startTime,
   "end":endTime,
   "noticeIds": [
-    noticeId
+
   ],
   "countryIds": [
     3469034,
@@ -180,7 +178,7 @@ var africa = {
   "start": startTime,
   "end":endTime,
   "noticeIds": [
-    noticeId
+
   ],
   "countryIds": [
     953987,
@@ -201,7 +199,7 @@ var caribbean = {
   "start": startTime,
   "end":endTime,
   "noticeIds": [
-    noticeId
+
   ],
   "countryIds": [
     3573511,
@@ -236,7 +234,7 @@ var otherEu = {
   "start": startTime,
   "end":endTime,
   "noticeIds": [
-    noticeId
+
   ],
   "countryIds": [
     935317,
