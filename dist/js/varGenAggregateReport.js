@@ -1,13 +1,14 @@
-var startTime = 1672531200000;
-var endTime = 1696809600000;
-var noticeId;
+var startTime = 1693526400000;
+var endTime = 1696118400000;
+var noticeId=[
+
+]
 var payloads = []
 
 var nortAmerica = {
   "start": startTime,
   "end":endTime,
-  "noticeIds": [
-  ],
+  "noticeIds": noticeId,
   "countryIds": [
     6252001,
     6251999,
@@ -20,8 +21,7 @@ payloads.push(nortAmerica)
 var europe = {
   "start": startTime,
   "end":endTime,
-  "noticeIds": [
-  ],
+  "noticeIds": noticeId,
   "countryIds": [
     2921044,
     2510769,
@@ -62,9 +62,7 @@ payloads.push(europe)
 var asiaPacific = {
   "start": startTime,
   "end":endTime,
-  "noticeIds": [
-
-  ],
+  "noticeIds": noticeId,
   "countryIds": [
     1814991,
     1668284,
@@ -94,9 +92,7 @@ payloads.push(asiaPacific)
 var middleEast = {
   "start": startTime,
   "end":endTime,
-  "noticeIds": [
-
-  ],
+  "noticeIds": noticeId,
   "countryIds": [
     294640,
     298795,
@@ -111,9 +107,7 @@ payloads.push(middleEast)
 var centralAmerica = {
   "start": startTime,
   "end":endTime,
-  "noticeIds": [
-
-  ],
+  "noticeIds": noticeId,
   "countryIds": [
     3996063,
     3582678,
@@ -130,9 +124,7 @@ payloads.push(centralAmerica)
 var europeNonEu = {
   "start": startTime,
   "end":endTime,
-  "noticeIds": [
-
-  ],
+  "noticeIds": noticeId,
   "countryIds": [
     2017370,
     3144096,
@@ -153,9 +145,7 @@ payloads.push(europeNonEu)
 var southAmerica = {
   "start": startTime,
   "end":endTime,
-  "noticeIds": [
-
-  ],
+  "noticeIds": noticeId,
   "countryIds": [
     3469034,
     3865483,
@@ -177,9 +167,7 @@ payloads.push(southAmerica)
 var africa = {
   "start": startTime,
   "end":endTime,
-  "noticeIds": [
-
-  ],
+  "noticeIds": noticeId,
   "countryIds": [
     953987,
     2589581,
@@ -198,9 +186,7 @@ payloads.push(africa)
 var caribbean = {
   "start": startTime,
   "end":endTime,
-  "noticeIds": [
-
-  ],
+  "noticeIds": noticeId,
   "countryIds": [
     3573511,
     3576396,
@@ -233,9 +219,7 @@ payloads.push(caribbean)
 var otherEu = {
   "start": startTime,
   "end":endTime,
-  "noticeIds": [
-
-  ],
+  "noticeIds": noticeId,
   "countryIds": [
     935317,
     3042362,

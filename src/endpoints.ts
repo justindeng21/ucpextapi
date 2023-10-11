@@ -46,8 +46,19 @@ test.app.post('/',jsonParser,(req,res)=>{
 })
 
 
-test.app.post('/childprocess2',jsonParser,(req,res)=>{
-    console.log(req.body)
+test.app.get('/childprocess2',jsonParser,(req,res)=>{
+    exec('python pythonSubRoutines/aggregateData2.py', (error, stdout, stderr) => {
+        if (error) {
+          console.log(`error: ${error.message}`);
+        }
+        else if (stderr) {
+          console.log(`stderr: ${stderr}`);
+        }
+        else {
+          console.log(stdout);
+        }
+    })
+    res.send('hello')
 })
 
 test.app.get('/childprocess',(req,res)=>{
