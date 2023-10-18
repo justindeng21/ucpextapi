@@ -31,7 +31,7 @@ class fileUploader():
             aws_access_key_id=os.environ.get('awsAccessID'),
             aws_secret_access_key=os.environ.get('awsSecretKey')
         )
-        s3_client.upload_file('data/'+file_names[0], 'aggregate-reports-ucp', self.randomKey()+'-dateBasedAggregation.csv')
+        s3_client.upload_file('data/'+file_names[0], 'aggregate-reports-ucp', self.randomKey()+'-cookie_data.json')
         self.deleteFiles()
     
     def deleteFiles(self):
