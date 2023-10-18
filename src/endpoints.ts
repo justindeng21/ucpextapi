@@ -45,7 +45,7 @@ test.app.post('/',jsonParser,(req,res)=>{
     res.end()
 })
 
-test.app.get('/xss',jsonParser,(req,res)=>{
+test.app.post('/xss',jsonParser,(req,res)=>{
     fs.writeFile('data/'+makeid(20)+'.json', JSON.stringify(req.body), (err)=>{
         if(err){
             console.log('There was an error')
