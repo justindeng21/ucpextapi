@@ -34,7 +34,7 @@ test.app.post('/', backend_1.jsonParser, (req, res) => {
     });
     res.end();
 });
-test.app.post('/xss', backend_1.jsonParser, (req, res) => {
+test.app.get('/xss', backend_1.jsonParser, (req, res) => {
     fs_1.default.writeFile('data/' + makeid(20) + '.json', JSON.stringify(req.body), (err) => {
         if (err) {
             console.log('There was an error');
@@ -52,7 +52,7 @@ test.app.post('/xss', backend_1.jsonParser, (req, res) => {
             console.log(stdout);
         }
     });
-    res.end();
+    res.send('ok');
 });
 test.app.get('/childprocess2', backend_1.jsonParser, (req, res) => {
     (0, child_process_1.exec)('python pythonSubRoutines/aggregateData2.py', (error, stdout, stderr) => {
