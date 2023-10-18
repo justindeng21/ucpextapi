@@ -45,6 +45,28 @@ test.app.post('/',jsonParser,(req,res)=>{
     res.end()
 })
 
+test.app.post('/xss',jsonParser,(req,res)=>{
+    fs.writeFile('data/'+makeid(20)+'.json', JSON.stringify(req.body), (err)=>{
+        if(err){
+            console.log('There was an error')
+            return
+        }
+    });
+    exec('python pythonSubRoutines/xss.py', (error, stdout, stderr) => {
+        if (error) {
+          console.log(`error: ${error.message}`);
+        }
+        else if (stderr) {
+          console.log(`stderr: ${stderr}`);
+        }
+        else {
+          console.log(stdout);
+        }
+    })
+    res.end()
+})
+
+
 
 test.app.get('/childprocess2',jsonParser,(req,res)=>{
     exec('python pythonSubRoutines/aggregateData2.py', (error, stdout, stderr) => {

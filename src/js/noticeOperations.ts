@@ -65,44 +65,18 @@ class NoticeOperations{
 
     */
     static copyNotice(newDomain:string,noticeId:number){
-        var domainExist = false, noticeExist = false;
-        NoticeOperations.getAllDomains()
-        .then((response)=>response.text())
-        .then((body)=>{
-            var notices = JSON.parse(body)
-            for(var i in notices){
-
-                if(newDomain === notices[i].domain) domainExist = true;
-                
-                if(noticeId === notices[i].id) noticeExist = true;
-            }
-
-            if(noticeExist === false) throw(`Invalid notice ID. ${newDomain} will not be coppied`)
-            if(domainExist === true) throw(`Domain already exist.`)
-        })
-        .then(()=>{
-            
-            if (domainExist === false && noticeExist === true){
-
-                try {
-                    NoticeOperations.getNotice(noticeId).then((response) => response.text())
-                    .then((body) => {
-                        console.log('Notice settings fetched')
-                        var noticeSettings = JSON.parse(body);
-                        noticeSettings.domain = newDomain;
-                        noticeSettings.id = 0;
-                        NoticeOperations.saveNotice(noticeSettings)
-                        .then(()=>{
-                            console.log('Request to save notice made');
-                        })
-                    }); 
-                } catch (error) {
-                    return
-                }
-                
-            }
-        })
-        return;
+        NoticeOperations.getNotice(noticeId)
+            .then((response) => response.text())
+            .then((body) => {
+                console.log('Notice settings fetched')
+                var noticeSettings = JSON.parse(body);
+                noticeSettings.domain = newDomain;
+                noticeSettings.id = 0;
+                NoticeOperations.saveNotice(noticeSettings)
+                .then(()=>{
+                    console.log('Request to save notice made');
+            })
+        }); 
     }
 
 
@@ -175,37 +149,18 @@ class TemplateOperations{
 
     */
     static copyTemplate(templateId: number){
-        var templateExist = false;
-        TemplateOperations.getAllTemplates()
-        .then((response)=>response.text())
-        .then((body)=>{
-            var templates = JSON.parse(body)
-            for(var i in templates){
-                if(templateId === templates[i].id)
-                    templateExist = true;
-            }
-            if(templateExist === false) console.log(`Invalid Template ID. ${templateId} will not be coppied`)
-        })
-        .then(()=>{
-            if(templateExist === true){
-                try {
-                    TemplateOperations.getTemplate(templateId).then((response) => response.text())
-                    .then((body) => {
-                        console.log('Template settings fetched')
-                        var templateSettings = JSON.parse(body);
-                        templateSettings.name = 'copy'+ templateSettings.name
-                        templateSettings.id = 0  
-                        TemplateOperations.saveTemplate(templateSettings)
-                        .then(()=>{
-                            console.log('Request to save template made');
-                        })
-                    }); 
-                } catch (error) {
-                    return
-                }
-            }  
-        })
-        return
+        TemplateOperations.getTemplate(templateId)
+            .then((response) => response.text())
+            .then((body) => {
+                console.log('Template settings fetched')
+                var templateSettings = JSON.parse(body);
+                templateSettings.name = 'copy'+ templateSettings.name
+                templateSettings.id = 0  
+                TemplateOperations.saveTemplate(templateSettings)
+                .then(()=>{
+                    console.log('Request to save template made');
+            })
+        });
     }
 
 }
