@@ -39,7 +39,7 @@ class fileUploader():
             aws_secret_access_key=os.environ.get('awsSecretKey')
         )
         
-        s3_client.upload_file(path, 'testbackup-corelogic', self.file.getFileName()+'.json')
+        s3_client.upload_file(path, 'testbackup-corelogic', self.file.getFileName())
         os.remove(path)
 
 
