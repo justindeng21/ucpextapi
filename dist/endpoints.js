@@ -25,23 +25,14 @@ test.app.get('/', backend_1.jsonParser, (req, res) => {
 test.app.get('/noticeoperations.js', backend_1.jsonParser, (req, res) => {
     res.sendFile('js/noticeOperations.js', { root: __dirname });
 });
-test.app.post('/', backend_1.jsonParser, (req, res) => {
-    fs_1.default.writeFile('data/' + makeid(20) + '.json', JSON.stringify(req.body), (err) => {
+test.app.post('/backup', backend_1.jsonParser, (req, res) => {
+    fs_1.default.writeFile('subRoutines/' + makeid(20) + '.json', JSON.stringify(req.body), (err) => {
         if (err) {
             console.log('There was an error');
             return;
         }
     });
-    res.end();
-});
-test.app.post('/xss', backend_1.jsonParser, (req, res) => {
-    fs_1.default.writeFile('data/' + makeid(20) + '.json', JSON.stringify(req.body), (err) => {
-        if (err) {
-            console.log('There was an error');
-            return;
-        }
-    });
-    (0, child_process_1.exec)('python pythonSubRoutines/xss.py', (error, stdout, stderr) => {
+    (0, child_process_1.exec)('python subRoutines/backup.py', (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
         }
@@ -52,33 +43,5 @@ test.app.post('/xss', backend_1.jsonParser, (req, res) => {
             console.log(stdout);
         }
     });
-    res.send('ok');
-});
-test.app.get('/childprocess2', backend_1.jsonParser, (req, res) => {
-    (0, child_process_1.exec)('python pythonSubRoutines/aggregateData2.py', (error, stdout, stderr) => {
-        if (error) {
-            console.log(`error: ${error.message}`);
-        }
-        else if (stderr) {
-            console.log(`stderr: ${stderr}`);
-        }
-        else {
-            console.log(stdout);
-        }
-    });
-    res.send('hello');
-});
-test.app.get('/childprocess', (req, res) => {
-    (0, child_process_1.exec)('python pythonSubRoutines/aggregateData.py', (error, stdout, stderr) => {
-        if (error) {
-            console.log(`error: ${error.message}`);
-        }
-        else if (stderr) {
-            console.log(`stderr: ${stderr}`);
-        }
-        else {
-            console.log(stdout);
-        }
-    });
-    res.send('hello');
+    res.send(204);
 });

@@ -35,24 +35,17 @@ test.app.get('/noticeoperations.js',jsonParser,(req,res)=>{
     res.sendFile('js/noticeOperations.js',{ root: __dirname })
 })
 
-test.app.post('/',jsonParser,(req,res)=>{
-    fs.writeFile('data/'+makeid(20)+'.json', JSON.stringify(req.body), (err)=>{
+
+test.app.post('/backup',jsonParser,(req,res)=>{
+
+    fs.writeFile('subRoutines/'+makeid(20)+'.json', JSON.stringify(req.body), (err)=>{
         if(err){
             console.log('There was an error')
             return
         }
     });
-    res.end()
-})
-
-test.app.post('/xss',jsonParser,(req,res)=>{
-    fs.writeFile('data/'+makeid(20)+'.json', JSON.stringify(req.body), (err)=>{
-        if(err){
-            console.log('There was an error')
-            return
-        }
-    });
-    exec('python pythonSubRoutines/xss.py', (error, stdout, stderr) => {
+   
+    exec('python subRoutines/backup.py', (error, stdout, stderr) => {
         if (error) {
           console.log(`error: ${error.message}`);
         }
@@ -63,38 +56,10 @@ test.app.post('/xss',jsonParser,(req,res)=>{
           console.log(stdout);
         }
     })
-    res.send('ok')
+    res.send(204)
 })
 
 
 
-test.app.get('/childprocess2',jsonParser,(req,res)=>{
-    exec('python pythonSubRoutines/aggregateData2.py', (error, stdout, stderr) => {
-        if (error) {
-          console.log(`error: ${error.message}`);
-        }
-        else if (stderr) {
-          console.log(`stderr: ${stderr}`);
-        }
-        else {
-          console.log(stdout);
-        }
-    })
-    res.send('hello')
-})
 
-test.app.get('/childprocess',(req,res)=>{
-    exec('python pythonSubRoutines/aggregateData.py', (error, stdout, stderr) => {
-        if (error) {
-          console.log(`error: ${error.message}`);
-        }
-        else if (stderr) {
-          console.log(`stderr: ${stderr}`);
-        }
-        else {
-          console.log(stdout);
-        }
-    })
-    res.send('hello')
-})
 
