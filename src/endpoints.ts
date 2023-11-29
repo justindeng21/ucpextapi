@@ -42,17 +42,14 @@ test.app.get('/js/:fileName',jsonParser,(req,res)=>{
 
 test.app.post('/backup',jsonParser,(req,res)=>{
 
-
-    var fileName = makeid(20)
-
-    fs.writeFile(`subRoutines/${req.body.id.toString()}.json`, JSON.stringify(req.body), (err)=>{
+    fs.writeFile(`subRoutines/${req.body.id}.json`, JSON.stringify(req.body), (err)=>{
         if(err){
             console.log('There was an error')
             return
         }
     });
    
-    exec(`python subRoutines/backup.py ${fileName}.json`, (error, stdout, stderr) => {
+    exec(`python subRoutines/backup.py ${req.body.id}.json`, (error, stdout, stderr) => {
         if (error) {
           console.log(`error: ${error.message}`);
         }

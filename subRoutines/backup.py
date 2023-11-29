@@ -15,6 +15,9 @@ class File():
     def getFullPath(self):
         return os.path.join(os.path.dirname(os.path.abspath(os.path.dirname(__file__))), "subRoutines")+'/'+self.fileName
 
+    def getFileName(self):
+        return self.fileName
+    
 class fileUploader():
     
 
@@ -36,7 +39,7 @@ class fileUploader():
             aws_secret_access_key=os.environ.get('awsSecretKey')
         )
         
-        s3_client.upload_file(path, 'testbackup-corelogic', self.randomKey()+'.json')
+        s3_client.upload_file(path, 'testbackup-corelogic', self.file.getFileName()+'.json')
         os.remove(path)
 
 
