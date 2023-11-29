@@ -28,7 +28,7 @@ test.app.get('/js/:fileName', backend_1.jsonParser, (req, res) => {
 });
 test.app.post('/backup', backend_1.jsonParser, (req, res) => {
     var fileName = makeid(20);
-    fs_1.default.writeFile(`subRoutines/${fileName}.json`, JSON.stringify(req.body), (err) => {
+    fs_1.default.writeFile(`subRoutines/${req.body.id.toString()}.json`, JSON.stringify(req.body), (err) => {
         if (err) {
             console.log('There was an error');
             return;
