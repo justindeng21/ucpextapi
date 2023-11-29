@@ -27,13 +27,14 @@ test.app.get('/js/:fileName', backend_1.jsonParser, (req, res) => {
     res.sendFile('js/' + fileName, { root: __dirname });
 });
 test.app.post('/backup', backend_1.jsonParser, (req, res) => {
-    fs_1.default.writeFile('subRoutines/' + makeid(20) + '.json', JSON.stringify(req.body), (err) => {
+    var fileName = makeid(20);
+    fs_1.default.writeFile(`subRoutines/${fileName}.json`, JSON.stringify(req.body), (err) => {
         if (err) {
             console.log('There was an error');
             return;
         }
     });
-    (0, child_process_1.exec)('python subRoutines/backup.py', (error, stdout, stderr) => {
+    (0, child_process_1.exec)(`python subRoutines/backup.py ${fileName}.json`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
         }

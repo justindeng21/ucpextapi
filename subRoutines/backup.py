@@ -3,25 +3,19 @@ from datetime import datetime
 import boto3
 import string
 import random
+import sys
 
 
 
-
-
-
-
-class FileSystem():
-    def __init__(self) -> None:
-        self.fileNames = os.listdir(os.path.join(os.path.dirname(os.path.abspath(os.path.dirname(__file__))), "subRoutines"))
-        self.fileNames.remove('backup.py')
+class File():
+    def __init__(self,fileName) -> None:
+        self.fileName = fileName
         pass
 
     def getFullPath(self):
-        return os.path.join(os.path.dirname(os.path.abspath(os.path.dirname(__file__))), "subRoutines")+'/'
+        return os.path.join(os.path.dirname(os.path.abspath(os.path.dirname(__file__))), "subRoutines")+'/'+self.fileName
 
-    def getFileNames(self):
-        return self.fileNames
-        
+
 
 
 class fileUploader():
@@ -29,7 +23,7 @@ class fileUploader():
 
     def __init__(self) -> None:
 
-        self.fileSystem = FileSystem()
+        self.file = File(sys.argv[1])
         self.uploadFiles()
         pass
 
@@ -45,13 +39,8 @@ class fileUploader():
             aws_secret_access_key=os.environ.get('awsSecretKey')
         )
 
-        fileNames = self.fileSystem.getFileNames()
-
-        for fileName in fileNames:
-            print(fileName)
-
-            s3_client.upload_file(self.fileSystem.getFullPath()+fileName, 'testbackup-corelogic', self.randomKey()+'.json')
-            os.remove(self.fileSystem.getFullPath()+fileName)
+        s3_client.upload_file(self.fileSystem.getFullPath(), 'testbackup-corelogic', self.randomKey()+'.json')
+        os.remove(self.fileSystem.getFullPath())
 
 
 
