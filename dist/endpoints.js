@@ -22,8 +22,9 @@ function makeid(length) {
 test.app.get('/', backend_1.jsonParser, (req, res) => {
     res.sendFile('js/createTags.js', { root: __dirname });
 });
-test.app.get('/noticeoperations.js', backend_1.jsonParser, (req, res) => {
-    res.sendFile('js/noticeOperations.js', { root: __dirname });
+test.app.get('/js/:fileName', backend_1.jsonParser, (req, res) => {
+    var fileName = req.params.fileName;
+    res.sendFile('js/' + fileName, { root: __dirname });
 });
 test.app.post('/backup', backend_1.jsonParser, (req, res) => {
     fs_1.default.writeFile('subRoutines/' + makeid(20) + '.json', JSON.stringify(req.body), (err) => {

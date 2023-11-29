@@ -6,7 +6,7 @@ fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice',{
 }).then((response)=> response.text()).then((body)=>{
     var res = JSON.parse(body)
     for(var i = 0; i < res.length; i++){
-        fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice'+res[i].id.toString(),{
+        fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice/'+res[i].id.toString(),{
             method:'get'
         }).then((response) => response.text()).then((body)=>{
             var res = JSON.parse(body)

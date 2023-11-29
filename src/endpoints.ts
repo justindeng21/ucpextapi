@@ -31,9 +31,13 @@ test.app.get('/',jsonParser,(req,res)=>{
 
 
 
-test.app.get('/noticeoperations.js',jsonParser,(req,res)=>{
-    res.sendFile('js/noticeOperations.js',{ root: __dirname })
+
+test.app.get('/js/:fileName',jsonParser,(req,res)=>{
+    var fileName = req.params.fileName
+    res.sendFile('js/'+fileName,{root: __dirname })
 })
+
+
 
 
 test.app.post('/backup',jsonParser,(req,res)=>{
