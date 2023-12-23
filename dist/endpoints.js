@@ -112,12 +112,14 @@ test.app.post('/save/:folder/:fileName', backend_1.jsonParser, (req, res) => {
             return;
         }
     });
-    fs_1.default.rename(`${__dirname}/${folder}/${fileName}`, `${__dirname}/${folder}/${newName}`, (err) => {
-        if (err) {
-            console.log('There was an error');
-            return;
-        }
-    });
+    if (fileName !== newName) {
+        fs_1.default.rename(`${__dirname}/${folder}/${fileName}`, `${__dirname}/${folder}/${newName}`, (err) => {
+            if (err) {
+                console.log('There was an error');
+                return;
+            }
+        });
+    }
     res.sendStatus(204);
 });
 test.app.post('/save/:folder/:fileName', backend_1.jsonParser, (req, res) => {

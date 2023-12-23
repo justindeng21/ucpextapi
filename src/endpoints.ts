@@ -147,12 +147,15 @@ test.app.post('/save/:folder/:fileName',jsonParser,(req,res)=>{
         
     });
 
-    fs.rename(`${__dirname}/${folder}/${fileName}`, `${__dirname}/${folder}/${newName}`, (err) => { 
-        if(err){
-            console.log('There was an error')
-            return
-        }
-    }); 
+    if(fileName !== newName){
+        fs.rename(`${__dirname}/${folder}/${fileName}`, `${__dirname}/${folder}/${newName}`, (err) => { 
+            if(err){
+                console.log('There was an error')
+                return
+            }
+        }); 
+    }
+
     
 
     
