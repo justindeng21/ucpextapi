@@ -43,6 +43,6 @@ export class Server{
 
 
 
-export var jsonParser = bodyParser.json()
-export var urlencodedParser = bodyParser.urlencoded({ extended: false })
+export let jsonParser = bodyParser.json()
+export let urlencodedParser = bodyParser.urlencoded({ extended: false })
 
