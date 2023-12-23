@@ -22,7 +22,7 @@ class templateEngine{
     }
 
     getTextEditor(folder: string, fileName: string, data: string){
-        const textEditor = `<form action="/save/${folder}/${fileName}" name="textEditorForm" method="post" class="textEditorForm"><textarea spellcheck="false" class="textEditor" rows="50"name="code">${data}</textarea><input type="submit" value="Save" class="submitButton"></form>`
+        const textEditor = `<h1 class="heading">Text Editor</h1><form action="/save/${folder}/${fileName}" name="textEditorForm" method="post" class="textEditorForm"><textarea spellcheck="false" class="textEditor" rows="50"name="code">${data}</textarea><input type="submit" value="Save" class="submitButton"><a class="viewButton" href="/${folder}/${fileName}">View</a></form>` 
         return this.getPage(textEditor)
     }
 
@@ -47,28 +47,39 @@ function makeid(length:number) {
 test.app.get('/',jsonParser,(req,res)=>{
     let style = `<link rel="stylesheet" href="/css/styles.css">`
     let htmlString = `<head>${style}</head><div class="container">`
-    let jsFiles = fs.readdirSync(__dirname+'/js');
-    let redirectFiles = fs.readdirSync(__dirname+'/redirects');
-    let cssFiles = fs.readdirSync(__dirname+'/css');
-    let htmlFiles = fs.readdirSync(__dirname+'/html');
 
-    for(let i = 0; i < jsFiles.length; i++){
-        if(jsFiles[i].split('.')[1] !== 'ts')
-            htmlString+=`<a href="/editor/js/${jsFiles[i]}">js/${jsFiles[i]}</a>`
-    }
+    try{
+        let jsFiles = fs.readdirSync(__dirname+'/js');
+        //htmlString+="<h2 class=\"heading\">JavaScript</h2>"
+        for(let i = 0; i < jsFiles.length; i++){
+            if(jsFiles[i].split('.')[1] !== 'ts')
+                htmlString+=`<a href="/editor/js/${jsFiles[i]}">${jsFiles[i]}</a>`
+        }
+    }catch(error){}
 
-    for(let i = 0; i < redirectFiles.length; i++){
-        htmlString+=`<a href="editor/redirects/${redirectFiles[i]}">redirects/${redirectFiles[i]}</a>`
-    }
+    try{
+        let redirectFiles = fs.readdirSync(__dirname+'/redirects');
+        //htmlString+="<h2 class=\"heading\">Redirect Scripts</h2>"
+        for(let i = 0; i < redirectFiles.length; i++){
+            htmlString+=`<a href="editor/redirects/${redirectFiles[i]}">${redirectFiles[i]}</a>`
+        }
+    }catch(error){}
 
-    for(let i = 0; i < cssFiles.length; i++){
-        htmlString+=`<a href="editor/css/${cssFiles[i]}">css/${cssFiles[i]}</a>`
-    }
+    try{
+        let cssFiles = fs.readdirSync(__dirname+'/css');
+        //htmlString+="<h2 class=\"heading\">CSS</h2>"
+        for(let i = 0; i < cssFiles.length; i++){
+            htmlString+=`<a href="editor/css/${cssFiles[i]}">${cssFiles[i]}</a>`
+        }
+    }catch(error){}
 
-    for(let i = 0; i < htmlFiles.length; i++){
-        htmlString+=`<a href="editor/html/${htmlFiles[i]}">html/${htmlFiles[i]}</a>`
-    }
-    
+    try{
+        let htmlFiles = fs.readdirSync(__dirname+'/html');
+        //htmlString+="<h2 class=\"heading\">HTML</h2>"
+        for(let i = 0; i < htmlFiles.length; i++){
+            htmlString+=`<a href="editor/html/${htmlFiles[i]}">${htmlFiles[i]}</a>`
+        } 
+    }catch(error){}
     htmlString+="</div>"
     res.send(htmlString)
     
