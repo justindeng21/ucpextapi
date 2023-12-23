@@ -9,19 +9,36 @@ const child_process_1 = require("child_process");
 let test;
 test = new backend_1.Server();
 class templateEngine {
-    getPage(content) {
+    getPage(content, scripts) {
         const style = `<link rel="stylesheet" href="../css/textEditor.css">`;
-        const head = `<head>${style}</head>`;
-        const body = `<body>${this.getContainer(content)}<body>`;
-        const html = `<html>${head}${body}<html>`;
+        const head = `<head>${style}<script src="/js/tabs.js" defer></script>${scripts}</head>`;
+        const body = `<body>${this.getContainer(content)}</body>`;
+        const html = `<html>${head}${body}</html>`;
         return html;
     }
     getContainer(content) {
         return `<div class="container">${content}</div>`;
     }
     getTextEditor(folder, fileName, data) {
-        const textEditor = `<h1 class="heading">Text Editor</h1><form action="/save/${folder}/${fileName}" name="textEditorForm" method="post" class="textEditorForm"><textarea spellcheck="false" class="textEditor" rows="50"name="code">${data}</textarea><input type="submit" value="Save" class="submitButton"><a class="viewButton" href="/${folder}/${fileName}">View</a></form>`;
-        return this.getPage(textEditor);
+        const textEditor = `<h1 class="heading">Text Editor</h1>
+        <form action="/save/${folder}/${fileName}" name="textEditorForm" method="post" class="textEditorForm">
+            <input type="text" placeholder="test" class="filename" name="filename" value="${fileName}">
+            <textarea spellcheck="false" class="textEditor" id="textEditor" rows="50"name="code">${data}</textarea>
+            <input type="submit" value="Save" class="submitButton"><a class="viewButton" href="/${folder}/${fileName}">View</a>
+        </form>`;
+        return this.getPage(textEditor, '');
+    }
+    getNewFileEditor() {
+        const textEditor = `<h1 class="heading">Text Editor</h1>
+        <form action="/" name="textEditorForm" method="post" class="textEditorForm" id="textEditorForm">
+            <input type="text" placeholder="test" id="filename" class="filename" name="filename" >
+            <textarea spellcheck="false" class="textEditor" rows="50"name="code"></textarea>
+            <input type="submit" value="Save" class="submitButton">
+        </form>`;
+        return this.getPage(textEditor, this.getScripts());
+    }
+    getScripts() {
+        return `<script src="/js/textEditor.js" defer></script>`;
     }
 }
 let templater = new templateEngine();
@@ -39,15 +56,6 @@ function makeid(length) {
 test.app.get('/', backend_1.jsonParser, (req, res) => {
     let style = `<link rel="stylesheet" href="/css/styles.css">`;
     let htmlString = `<head>${style}</head><div class="container">`;
-    try {
-        let jsFiles = fs_1.default.readdirSync(__dirname + '/js');
-        //htmlString+="<h2 class=\"heading\">JavaScript</h2>"
-        for (let i = 0; i < jsFiles.length; i++) {
-            if (jsFiles[i].split('.')[1] !== 'ts')
-                htmlString += `<a href="/editor/js/${jsFiles[i]}">${jsFiles[i]}</a>`;
-        }
-    }
-    catch (error) { }
     try {
         let redirectFiles = fs_1.default.readdirSync(__dirname + '/redirects');
         //htmlString+="<h2 class=\"heading\">Redirect Scripts</h2>"
@@ -82,11 +90,49 @@ test.app.get('/editor/:folder/:fileName', backend_1.jsonParser, (req, res) => {
         res.send(templater.getTextEditor(folder, fileName, data));
     });
 });
+test.app.get('/editor', backend_1.jsonParser, (req, res) => {
+    res.send(templater.getNewFileEditor());
+});
 test.app.post('/save/:folder/:fileName', backend_1.jsonParser, (req, res) => {
     let fileName = req.params.fileName;
+    let newName = req.body.filename;
     let folder = req.params.folder;
     let code = req.body.code;
+    if (folder === 'new') {
+        const fileType = fileName.split('.')[1];
+        if (fileType === 'js') {
+            folder = 'redirects';
+        }
+        else
+            folder = fileType;
+    }
     fs_1.default.writeFile(`${__dirname}/${folder}/${fileName}`, code, (err) => {
+        if (err) {
+            console.log('There was an error writting');
+            return;
+        }
+    });
+    fs_1.default.rename(`${__dirname}/${folder}/${fileName}`, `${__dirname}/${folder}/${newName}`, (err) => {
+        if (err) {
+            console.log('There was an error');
+            return;
+        }
+    });
+    res.sendStatus(204);
+});
+test.app.post('/save/:folder/:fileName', backend_1.jsonParser, (req, res) => {
+    let fileName = req.params.fileName;
+    let newName = req.body.filename;
+    let folder = req.params.folder;
+    let code = req.body.code;
+    console.log(`${__dirname}/${folder}/${newName}`);
+    fs_1.default.writeFile(`${__dirname}/${folder}/${fileName}`, code, (err) => {
+        if (err) {
+            console.log('There was an error');
+            return;
+        }
+    });
+    fs_1.default.rename(`${__dirname}/${folder}/${fileName}`, `${__dirname}/${folder}/${newName}`, (err) => {
         if (err) {
             console.log('There was an error');
             return;
