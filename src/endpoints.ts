@@ -3,6 +3,7 @@ import fs from 'fs'
 import {exec} from 'child_process'
 
 
+
 let test : Server
 test = new Server()
 
@@ -29,7 +30,7 @@ test.app.get('/',jsonParser,(req,res)=>{
 
     for(let i = 0; i < jsFiles.length; i++){
         if(jsFiles[i].split('.')[1] !== 'ts')
-            htmlString+=`<a href="/js/${jsFiles[i]}">js/${jsFiles[i]}</a>`
+            htmlString+=`<a href="/editor/js/${jsFiles[i]}">js/${jsFiles[i]}</a>`
     }
 
     for(let i = 0; i < redirectFiles.length; i++){
@@ -44,6 +45,39 @@ test.app.get('/',jsonParser,(req,res)=>{
     res.send(htmlString)
     
 })
+
+
+test.app.get('/editor/:folder/:fileName',jsonParser,(req,res)=>{
+    let fileName = req.params.fileName
+    let folder = req.params.folder
+
+    
+    fs.readFile(`${__dirname}/${folder}/${fileName}`, 'utf8', (error, data) => {
+        const body = `<form action="/save/${folder}/${fileName}" name="textEditorForm" method="post" class="textEditorForm"><textarea id="textEditor" class="" name="code" rows="15" cols="100" placeholder="">${data}</textarea><input type="submit" value="Save" class="submitButton"></form>`
+    })
+
+    res.send('<script>console.log(\'hi\')</script>')
+
+    
+})
+
+
+test.app.post('/save/:folder/:fileName',jsonParser,(req,res)=>{
+    let fileName = req.params.fileName
+    let folder = req.params.folder
+    let code = req.body.code
+
+    fs.writeFile(`${__dirname}/${folder}/${fileName}`,code, (err)=>{
+        if(err){
+            console.log('There was an error')
+            return
+        }
+    });
+    
+    res.sendStatus(204)
+})
+
+
 
 
 
@@ -61,6 +95,16 @@ test.app.get('/css/:fileName',jsonParser,(req,res)=>{
     let fileName = req.params.fileName
     res.sendFile('css/'+fileName,{root: __dirname })
 })
+
+test.app.get('/home',jsonParser,(req,res)=>{
+
+    res.sendFile('html/texteditor.html',{root: __dirname })
+})
+
+
+
+
+
 
 test.app.post('/backup',jsonParser,(req,res)=>{
 
