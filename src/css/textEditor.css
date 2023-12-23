@@ -17,6 +17,13 @@
 
 }
 
+html{
+    background-color: #1e1e1e ;
+}
+
 .textEditor{
-    margin: 10px 20% 10px;
+    margin: 5% 10% 0%;
+    height: 100%;
+    background-color: #2d2d30 ;
+    color: #d4d4d4 ;
 }

@@ -7,6 +7,29 @@ import {exec} from 'child_process'
 let test : Server
 test = new Server()
 
+class templateEngine{
+    getPage(content: string){
+        const style = `<link rel="stylesheet" href="../css/textEditor.css">`
+        const head = `<head>${style}</head>`
+        const body = `<body>${this.getContainer(content)}<body>`
+
+        const html = `<html>${head}${body}<html>`
+        return html
+    }
+
+    getContainer(content: string){
+        return `<div class="container">${content}</div>`
+    }
+
+    getTextEditor(folder: string, fileName: string, data: string){
+        const textEditor = `<form action="/save/${folder}/${fileName}" name="textEditorForm" method="post" class="textEditorForm"><textarea spellcheck="false" class="textEditor" rows="50"name="code">${data}</textarea><input type="submit" value="Save" class="submitButton"></form>`
+        return this.getPage(textEditor)
+    }
+
+    
+}
+
+let templater = new templateEngine()
 
 function makeid(length:number) {
     let result = '';
@@ -27,6 +50,7 @@ test.app.get('/',jsonParser,(req,res)=>{
     let jsFiles = fs.readdirSync(__dirname+'/js');
     let redirectFiles = fs.readdirSync(__dirname+'/redirects');
     let cssFiles = fs.readdirSync(__dirname+'/css');
+    let htmlFiles = fs.readdirSync(__dirname+'/html');
 
     for(let i = 0; i < jsFiles.length; i++){
         if(jsFiles[i].split('.')[1] !== 'ts')
@@ -34,11 +58,15 @@ test.app.get('/',jsonParser,(req,res)=>{
     }
 
     for(let i = 0; i < redirectFiles.length; i++){
-        htmlString+=`<a href="/redirects/${redirectFiles[i]}">redirects/${redirectFiles[i]}</a>`
+        htmlString+=`<a href="editor/redirects/${redirectFiles[i]}">redirects/${redirectFiles[i]}</a>`
     }
 
     for(let i = 0; i < cssFiles.length; i++){
-        htmlString+=`<a href="/css/${cssFiles[i]}">css/${cssFiles[i]}</a>`
+        htmlString+=`<a href="editor/css/${cssFiles[i]}">css/${cssFiles[i]}</a>`
+    }
+
+    for(let i = 0; i < htmlFiles.length; i++){
+        htmlString+=`<a href="editor/html/${htmlFiles[i]}">html/${htmlFiles[i]}</a>`
     }
     
     htmlString+="</div>"
@@ -47,18 +75,18 @@ test.app.get('/',jsonParser,(req,res)=>{
 })
 
 
+
+
+
 test.app.get('/editor/:folder/:fileName',jsonParser,(req,res)=>{
     let fileName = req.params.fileName
     let folder = req.params.folder
 
     
     fs.readFile(`${__dirname}/${folder}/${fileName}`, 'utf8', (error, data) => {
-        const body = `<form action="/save/${folder}/${fileName}" name="textEditorForm" method="post" class="textEditorForm"><textarea id="textEditor" class="" name="code" rows="15" cols="100" placeholder="">${data}</textarea><input type="submit" value="Save" class="submitButton"></form>`
-    })
-
-    res.send('<script>console.log(\'hi\')</script>')
-
-    
+       
+        res.send(templater.getTextEditor(folder,fileName,data))
+    })    
 })
 
 
@@ -84,6 +112,11 @@ test.app.post('/save/:folder/:fileName',jsonParser,(req,res)=>{
 test.app.get('/js/:fileName',jsonParser,(req,res)=>{
     let fileName = req.params.fileName
     res.sendFile('js/'+fileName,{root: __dirname })
+})
+
+test.app.get('/html/:fileName',jsonParser,(req,res)=>{
+    let fileName = req.params.fileName
+    res.sendFile('html/'+fileName,{root: __dirname })
 })
 
 test.app.get('/redirects/:fileName',jsonParser,(req,res)=>{

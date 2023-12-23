@@ -8,6 +8,23 @@ const fs_1 = __importDefault(require("fs"));
 const child_process_1 = require("child_process");
 let test;
 test = new backend_1.Server();
+class templateEngine {
+    getPage(content) {
+        const style = `<link rel="stylesheet" href="../css/textEditor.css">`;
+        const head = `<head>${style}</head>`;
+        const body = `<body>${this.getContainer(content)}<body>`;
+        const html = `<html>${head}${body}<html>`;
+        return html;
+    }
+    getContainer(content) {
+        return `<div class="container">${content}</div>`;
+    }
+    getTextEditor(folder, fileName, data) {
+        const textEditor = `<form action="/save/${folder}/${fileName}" name="textEditorForm" method="post" class="textEditorForm"><textarea spellcheck="false" class="textEditor" rows="50"name="code">${data}</textarea><input type="submit" value="Save" class="submitButton"></form>`;
+        return this.getPage(textEditor);
+    }
+}
+let templater = new templateEngine();
 function makeid(length) {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -25,15 +42,19 @@ test.app.get('/', backend_1.jsonParser, (req, res) => {
     let jsFiles = fs_1.default.readdirSync(__dirname + '/js');
     let redirectFiles = fs_1.default.readdirSync(__dirname + '/redirects');
     let cssFiles = fs_1.default.readdirSync(__dirname + '/css');
+    let htmlFiles = fs_1.default.readdirSync(__dirname + '/html');
     for (let i = 0; i < jsFiles.length; i++) {
         if (jsFiles[i].split('.')[1] !== 'ts')
             htmlString += `<a href="/editor/js/${jsFiles[i]}">js/${jsFiles[i]}</a>`;
     }
     for (let i = 0; i < redirectFiles.length; i++) {
-        htmlString += `<a href="/redirects/${redirectFiles[i]}">redirects/${redirectFiles[i]}</a>`;
+        htmlString += `<a href="editor/redirects/${redirectFiles[i]}">redirects/${redirectFiles[i]}</a>`;
     }
     for (let i = 0; i < cssFiles.length; i++) {
-        htmlString += `<a href="/css/${cssFiles[i]}">css/${cssFiles[i]}</a>`;
+        htmlString += `<a href="editor/css/${cssFiles[i]}">css/${cssFiles[i]}</a>`;
+    }
+    for (let i = 0; i < htmlFiles.length; i++) {
+        htmlString += `<a href="editor/html/${htmlFiles[i]}">html/${htmlFiles[i]}</a>`;
     }
     htmlString += "</div>";
     res.send(htmlString);
@@ -42,9 +63,8 @@ test.app.get('/editor/:folder/:fileName', backend_1.jsonParser, (req, res) => {
     let fileName = req.params.fileName;
     let folder = req.params.folder;
     fs_1.default.readFile(`${__dirname}/${folder}/${fileName}`, 'utf8', (error, data) => {
-        const body = `<form action="/save/${folder}/${fileName}" name="textEditorForm" method="post" class="textEditorForm"><textarea id="textEditor" class="" name="code" rows="15" cols="100" placeholder="">${data}</textarea><input type="submit" value="Save" class="submitButton"></form>`;
+        res.send(templater.getTextEditor(folder, fileName, data));
     });
-    res.send('<script>console.log(\'hi\')</script>');
 });
 test.app.post('/save/:folder/:fileName', backend_1.jsonParser, (req, res) => {
     let fileName = req.params.fileName;
@@ -61,6 +81,10 @@ test.app.post('/save/:folder/:fileName', backend_1.jsonParser, (req, res) => {
 test.app.get('/js/:fileName', backend_1.jsonParser, (req, res) => {
     let fileName = req.params.fileName;
     res.sendFile('js/' + fileName, { root: __dirname });
+});
+test.app.get('/html/:fileName', backend_1.jsonParser, (req, res) => {
+    let fileName = req.params.fileName;
+    res.sendFile('html/' + fileName, { root: __dirname });
 });
 test.app.get('/redirects/:fileName', backend_1.jsonParser, (req, res) => {
     let fileName = req.params.fileName;
