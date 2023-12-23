@@ -38,7 +38,7 @@ body{
     margin: 0% 10% 0%;
     height: 100%;
     background-color: #2d2d30 ;
-    color: #d4d4d4 ;
+    color: #d4d4d4;
     border:2px solid white;
     font-family: 'Courier New', Courier, monospace;
     resize:none;
@@ -48,4 +48,11 @@ body{
     margin-top: 2% ;
     text-align: center;
     color: #d4d4d4;
+}
+
+.fileName{
+    margin: 0% 10% 0%;
+    background-color: #2d2d30 ;
+    color: #d4d4d4 ;
+    font-family: 'Courier New', Courier, monospace;
 }
