@@ -5,12 +5,12 @@ fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice', {
         'content-type': 'application/json'
     }
 }).then((response) => response.text()).then((body) => {
-    var res = JSON.parse(body);
-    for (var i = 0; i < res.length; i++) {
+    let res = JSON.parse(body);
+    for (let i = 0; i < res.length; i++) {
         fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice/' + res[i].id.toString(), {
             method: 'get'
         }).then((response) => response.text()).then((body) => {
-            var res = JSON.parse(body);
+            let res = JSON.parse(body);
             console.log(res);
             fetch('https://ucpext-516b1e095e39.herokuapp.com/backup', {
                 method: 'POST',

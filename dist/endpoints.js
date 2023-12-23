@@ -20,11 +20,35 @@ function makeid(length) {
     return result;
 }
 test.app.get('/', backend_1.jsonParser, (req, res) => {
-    res.sendFile('js/createTags.js', { root: __dirname });
+    let style = `<link rel="stylesheet" href="/css/styles.css">`;
+    let htmlString = `<head>${style}</head><div class="container">`;
+    let jsFiles = fs_1.default.readdirSync(__dirname + '/js');
+    let redirectFiles = fs_1.default.readdirSync(__dirname + '/redirects');
+    let cssFiles = fs_1.default.readdirSync(__dirname + '/css');
+    for (let i = 0; i < jsFiles.length; i++) {
+        if (jsFiles[i].split('.')[1] !== 'ts')
+            htmlString += `<a href="/js/${jsFiles[i]}">js/${jsFiles[i]}</a>`;
+    }
+    for (let i = 0; i < redirectFiles.length; i++) {
+        htmlString += `<a href="/redirects/${redirectFiles[i]}">redirects/${redirectFiles[i]}</a>`;
+    }
+    for (let i = 0; i < cssFiles.length; i++) {
+        htmlString += `<a href="/css/${cssFiles[i]}">css/${cssFiles[i]}</a>`;
+    }
+    htmlString += "</div>";
+    res.send(htmlString);
 });
 test.app.get('/js/:fileName', backend_1.jsonParser, (req, res) => {
-    var fileName = req.params.fileName;
+    let fileName = req.params.fileName;
     res.sendFile('js/' + fileName, { root: __dirname });
+});
+test.app.get('/redirects/:fileName', backend_1.jsonParser, (req, res) => {
+    let fileName = req.params.fileName;
+    res.sendFile('redirects/' + fileName, { root: __dirname });
+});
+test.app.get('/css/:fileName', backend_1.jsonParser, (req, res) => {
+    let fileName = req.params.fileName;
+    res.sendFile('css/' + fileName, { root: __dirname });
 });
 test.app.post('/backup', backend_1.jsonParser, (req, res) => {
     fs_1.default.writeFile(`subRoutines/${req.body.id}.json`, JSON.stringify(req.body), (err) => {

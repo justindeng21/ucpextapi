@@ -63,7 +63,7 @@ class NoticeOperations {
             .then((response) => response.text())
             .then((body) => {
             console.log('Notice settings fetched');
-            var noticeSettings = JSON.parse(body);
+            let noticeSettings = JSON.parse(body);
             noticeSettings.domain = newDomain;
             noticeSettings.id = 0;
             NoticeOperations.saveNotice(noticeSettings)
@@ -137,7 +137,7 @@ class TemplateOperations {
             .then((response) => response.text())
             .then((body) => {
             console.log('Template settings fetched');
-            var templateSettings = JSON.parse(body);
+            let templateSettings = JSON.parse(body);
             templateSettings.name = 'copy' + templateSettings.name;
             templateSettings.id = 0;
             TemplateOperations.saveTemplate(templateSettings)

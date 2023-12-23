@@ -5,7 +5,7 @@
   "main": "endpoints.js",
   "scripts": {
     "dev": "nodemon src/endpoints.ts",
-    "start": "node dist/endpoints.js",
+    "start": "tsc && node dist/endpoints.js",
     "deploy": "tsc && git add . && git commit -m \"auto-deploy\" && git push origin main"
   },
   "author": "Justin Deng",
