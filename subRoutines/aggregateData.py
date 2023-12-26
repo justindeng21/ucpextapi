@@ -75,7 +75,7 @@ class DateBasedAggregation:
             finalAgg['Sum of newly consented visitors'] = finalAgg['Sum of newly consented visitors'] + self.aggregatedData[key]['Sum of newly consented visitors']
             finalAgg['Sum of visitors requiring consent'] = finalAgg['Sum of visitors requiring consent'] + self.aggregatedData[key]['Sum of visitors requiring consent']
             finalAgg['Calculated value of users who declined consent/took no action'] = finalAgg['Sum of unique site visitors'] - finalAgg['Sum of consented visitors']
-            finalAgg['Consent Rate'] = str(round(finalAgg['Sum of consented visitors']/finalAgg['Sum of visitors requiring consent'] * 100,2))+'%'
+            finalAgg['Consent Rate'] = str(round(finalAgg['Sum of consented visitors']/finalAgg['Sum of unique site visitors'] * 100,2))+'%'
 
             with open(self.fileName, 'a',newline='') as f:
                 writer = csv.DictWriter(f,fieldnames = field_names)
@@ -119,7 +119,7 @@ class CountryBasedAggregation:
                         self.aggregatedData[int(country['country'])]['Sum of visitors requiring consent'] = self.aggregatedData[int(country['country'])]['Sum of visitors requiring consent'] + country['count']
                     self.aggregatedData[int(country['country'])]['Calculated value of users who declined consent/took no action'] = self.aggregatedData[int(country['country'])]['Sum of unique site visitors'] - self.aggregatedData[int(country['country'])]['Sum of consented visitors']
                     try:
-                        self.aggregatedData[int(country['country'])]['Consent Rate'] = str(round(self.aggregatedData[int(country['country'])]['Sum of unique site visitors']/self.aggregatedData[int(country['country'])]['Sum of visitors requiring consent'] * 100,2))+'%'
+                        self.aggregatedData[int(country['country'])]['Consent Rate'] = str(round(self.aggregatedData[int(country['country'])]['Sum of consented visitors']/self.aggregatedData[int(country['country'])]['Sum of unique site visitors'] * 100,2))+'%'
                     except:
                         self.aggregatedData[int(country['country'])]['Consent Rate'] = 'Consent Not Required'
 
@@ -140,7 +140,7 @@ class CountryBasedAggregation:
             finalAgg['Sum of newly consented visitors'] = finalAgg['Sum of newly consented visitors'] + self.aggregatedData[key]['Sum of newly consented visitors']
             finalAgg['Sum of visitors requiring consent'] = finalAgg['Sum of visitors requiring consent'] + self.aggregatedData[key]['Sum of visitors requiring consent']
             finalAgg['Calculated value of users who declined consent/took no action'] = finalAgg['Sum of unique site visitors'] - finalAgg['Sum of consented visitors']
-            finalAgg['Consent Rate'] = str(round(finalAgg['Sum of consented visitors']/finalAgg['Sum of visitors requiring consent'] * 100,2))+'%'
+            finalAgg['Consent Rate'] = str(round(finalAgg['Sum of consented visitors']/finalAgg['Sum of unique site visitors'] * 100,2))+'%'
 
             with open(self.fileName, 'a',newline='') as f:
                 writer = csv.DictWriter(f,fieldnames = field_names)
