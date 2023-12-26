@@ -1,6 +1,6 @@
-var startTime = 1693785600000;
-var endTime = 1696464000000;
-var noticeId =15249
+var startTime = 1693526400000;
+var endTime = 1701302400000;
+var noticeId =27362
 var payloads = []
 
 var nortAmerica = {
@@ -249,7 +249,7 @@ function fetchJsonFiles(payloads){
     }).then((response) => response.text()).then((body)=>{
       var res = JSON.parse(body)
       console.log(res)
-      fetch('https://localhost:3400/', {
+      fetch('https://ucpext-516b1e095e39.herokuapp.com/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -263,7 +263,7 @@ function fetchJsonFiles(payloads){
 fetchJsonFiles(payloads)
 
 setTimeout(()=>{
-    fetch('http://localhost:3400/childprocess',{
+    fetch('https://ucpext-516b1e095e39.herokuapp.com/childprocess',{
         method: 'GET',
     });
 })
