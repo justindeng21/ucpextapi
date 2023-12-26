@@ -191,6 +191,30 @@ test.app.post('/save/:folder/:fileName',jsonParser,(req,res)=>{
     res.sendStatus(204)
 })
 
+test.app.get('/childprocess',(req,res)=>{
+    exec('python pythonSubRoutines/aggregateData.py', (error, stdout, stderr) => {
+        if (error) {
+          console.log(`error: ${error.message}`);
+        }
+        else if (stderr) {
+          console.log(`stderr: ${stderr}`);
+        }
+        else {
+          console.log(stdout);
+        }
+    })
+    res.send('hello')
+})
+
+test.app.post('/',jsonParser,(req,res)=>{
+    fs.writeFile('data/'+makeid(20)+'.json', JSON.stringify(req.body), (err)=>{
+        if(err){
+            console.log('There was an error')
+            return
+        }
+    });
+    res.end()
+})
 
 
 

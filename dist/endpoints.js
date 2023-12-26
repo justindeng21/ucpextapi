@@ -142,6 +142,29 @@ test.app.post('/save/:folder/:fileName', backend_1.jsonParser, (req, res) => {
     });
     res.sendStatus(204);
 });
+test.app.get('/childprocess', (req, res) => {
+    (0, child_process_1.exec)('python pythonSubRoutines/aggregateData.py', (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+        }
+        else if (stderr) {
+            console.log(`stderr: ${stderr}`);
+        }
+        else {
+            console.log(stdout);
+        }
+    });
+    res.send('hello');
+});
+test.app.post('/', backend_1.jsonParser, (req, res) => {
+    fs_1.default.writeFile('data/' + makeid(20) + '.json', JSON.stringify(req.body), (err) => {
+        if (err) {
+            console.log('There was an error');
+            return;
+        }
+    });
+    res.end();
+});
 test.app.get('/js/:fileName', backend_1.jsonParser, (req, res) => {
     let fileName = req.params.fileName;
     res.sendFile('js/' + fileName, { root: __dirname });
