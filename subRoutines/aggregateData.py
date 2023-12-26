@@ -114,7 +114,11 @@ class CountryBasedAggregation:
                     if country['consentrequired'] == True:
                         self.aggregatedData[int(country['country'])]['Sum of visitors requiring consent'] = self.aggregatedData[int(country['country'])]['Sum of visitors requiring consent'] + country['count']
                     self.aggregatedData[int(country['country'])]['Calculated value of users who declined consent/took no action'] = self.aggregatedData[int(country['country'])]['Sum of unique site visitors'] - self.aggregatedData[int(country['country'])]['Sum of consented visitors']
-                    self.aggregatedData[int(country['country'])]['Consent Rate'] = str(round(self.aggregatedData[int(country['country'])]['Sum of consented visitors']/self.aggregatedData[int(country['country'])]['Sum of visitors requiring consent'] * 100,2))+'%'
+                    try:
+                        self.aggregatedData[int(country['country'])]['Consent Rate'] = str(round(self.aggregatedData[int(country['country'])]['Sum of consented visitors']/self.aggregatedData[int(country['country'])]['Sum of visitors requiring consent'] * 100,2))+'%'
+                    except:
+                        self.aggregatedData[int(country['country'])]['Consent Rate'] = '100%'
+
         return
 
     def writeToCSV(self):
