@@ -143,7 +143,7 @@ test.app.post('/save/:folder/:fileName', backend_1.jsonParser, (req, res) => {
     res.sendStatus(204);
 });
 test.app.get('/childprocess', (req, res) => {
-    (0, child_process_1.exec)('python pythonSubRoutines/aggregateData.py', (error, stdout, stderr) => {
+    (0, child_process_1.exec)('python subRoutines/aggregateData.py', (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
         }

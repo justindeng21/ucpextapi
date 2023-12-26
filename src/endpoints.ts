@@ -192,7 +192,7 @@ test.app.post('/save/:folder/:fileName',jsonParser,(req,res)=>{
 })
 
 test.app.get('/childprocess',(req,res)=>{
-    exec('python pythonSubRoutines/aggregateData.py', (error, stdout, stderr) => {
+    exec('python subRoutines/aggregateData.py', (error, stdout, stderr) => {
         if (error) {
           console.log(`error: ${error.message}`);
         }
