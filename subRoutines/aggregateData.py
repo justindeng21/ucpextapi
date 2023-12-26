@@ -55,7 +55,7 @@ class DateBasedAggregation:
                     try:
                         self.aggregatedData[key]['Consent Rate'] = str(round(self.aggregatedData[key]['Sum of consented visitors']/self.aggregatedData[key]['Sum of visitors requiring consent'] * 100,2))+'%'
                     except:
-                        self.aggregatedData[key]['Consent Not Required']
+                        self.aggregatedData[key]['Consent Rate'] = 'Consent Not Required'
 
         return
 
