@@ -6,8 +6,8 @@ fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice', {
     }
 }).then((response) => response.text()).then(async (body) => {
     let res = JSON.parse(body);
-    for (let i = 0; i < res.length; i++) {
-        var resonse = new Promise(() => {
+    for (let i = 0; i <= res.length - 1; i++) {
+        var response = new Promise(() => {
             fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice/' + res[i].id.toString(), {
                 method: 'get'
             })
@@ -23,6 +23,6 @@ fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice', {
                 });
             });
         });
-        await resonse;
+        await response;
     }
 });
