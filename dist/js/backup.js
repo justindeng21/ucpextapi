@@ -7,7 +7,7 @@ fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice', {
 }).then((response) => response.text()).then(async (body) => {
     let res = JSON.parse(body);
     for (let i = 0; i <= res.length - 1; i++) {
-        var response = new Promise(() => {
+        var response = new Promise((resolve, reject) => {
             fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice/' + res[i].id.toString(), {
                 method: 'get'
             })
@@ -21,6 +21,7 @@ fetch('https://privacy.evidon.com/v3/sitenotice/api/v3/sitenotice', {
                     },
                     body: JSON.stringify(res)
                 });
+                resolve('Backup Done');
             });
         });
         await response;
